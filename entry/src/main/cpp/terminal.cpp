@@ -1628,11 +1628,41 @@ void terminal_context::Worker() {
 // fork & create pty
 // assume lock is held
 void terminal_context::Fork() {
+    
+    // termios
+    struct termios t {};
+    
+    t.c_iflag = ICRNL | IXON | IUTF8;
+    t.c_oflag = NL0 | CR0 | TAB0 | BS0 | VT0 | FF0 | OPOST | ONLCR;
+    t.c_cflag = B38400 | CS8 | CREAD;
+    t.c_lflag = ISIG | ECHO | ECHOE | ECHOK | IEXTEN | ECHOCTL | ECHOKE;
+
+    t.c_cc[VINTR] = 0x3;
+    t.c_cc[VQUIT] = 0x1c;
+    t.c_cc[VERASE] = 0x7f;
+    t.c_cc[VKILL] = 0x15;
+    t.c_cc[VEOF] = 0x4;
+    t.c_cc[VMIN] = 0x1;
+    t.c_cc[VSTART] = 0x11;
+    t.c_cc[VSTOP] = 0x13;
+    t.c_cc[VSUSP] = 0x1a;
+    t.c_cc[VREPRINT] = 0x12;
+    t.c_cc[VDISCARD] = 0xf;
+    t.c_cc[VWERASE] = 0x17;
+    t.c_cc[VLNEXT] = 0x16;
+
+    t.c_cc[19] = 0x7f;
+    t.c_cc[24] = 0x20;
+    t.c_cc[25] = 0x88;
+    t.c_cc[26] = 0xb6;
+    t.c_cc[27] = 0x7f;
+    t.c_cc[31] = 0x78;
+    
     struct winsize ws = {};
     ws.ws_col = term_col;
     ws.ws_row = term_row;
 
-    int pid = forkpty(&fd, nullptr, nullptr, &ws);
+    int pid = forkpty(&fd, nullptr, &t, &ws);
     if (!pid) {
 #ifdef STANDALONE
         execl("/bin/bash", "/bin/bash", nullptr);
