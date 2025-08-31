@@ -9,7 +9,7 @@ all: download/gcc-15.1.0.tar.xz
 	cd temp/gcc-15.1.0/build && make all-gcc -j $(shell nproc) -k || true
 	cd temp/gcc-15.1.0/build && cat ../../../0001-fix-gcc.diff | patch -Np1
 	cd temp/gcc-15.1.0/build && make all-gcc -j $(shell nproc)
-	cd temp/gcc-15.1.0/build && make install-gcc DESTDIR=$(shell pwd)/build
+	cd temp/gcc-15.1.0/build && make install-gcc -j $(shell nproc) DESTDIR=$(shell pwd)/build
 	$(OHOS_SDK_HOME)/native/llvm/bin/llvm-strip build/usr/local/bin/*
 	rm -f build/usr/local/libexec/gcc/$(OHOS_ARCH)-unknown-linux-musl/15.1.0/*.la
 	find build/usr/local/libexec/gcc/$(OHOS_ARCH)-unknown-linux-musl/15.1.0/ -maxdepth 1 -type f | xargs $(OHOS_SDK_HOME)/native/llvm/bin/llvm-strip
