@@ -6,9 +6,13 @@ export LC_TYPE := C
 export PKG_CONFIG_LIBDIR := $(shell pwd)/../sysroot/lib/pkgconfig:$(shell pwd)/../sysroot/share/pkgconfig
 # set toolchain paths
 ifeq ($(USE_CCACHE), 1)
+export HOST_CC := ccache cc
+export HOST_CXX := ccache c++
 export CC := ccache $(OHOS_SDK_HOME)/native/llvm/bin/$(OHOS_ARCH)-unknown-linux-ohos-clang
 export CXX := ccache $(OHOS_SDK_HOME)/native/llvm/bin/$(OHOS_ARCH)-unknown-linux-ohos-clang++
 else
+export HOST_CC := cc
+export HOST_CXX := c++
 export CC := $(OHOS_SDK_HOME)/native/llvm/bin/$(OHOS_ARCH)-unknown-linux-ohos-clang
 export CXX := $(OHOS_SDK_HOME)/native/llvm/bin/$(OHOS_ARCH)-unknown-linux-ohos-clang++
 endif
