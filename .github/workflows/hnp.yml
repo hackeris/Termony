@@ -47,7 +47,9 @@ jobs:
 
       - name: Setup ccache
         uses: hendrikmuhs/ccache-action@v1.2
-                              
+        with:
+          max-size: 2G
+
       - name: Download OHOS SDK
         shell: bash
         run: |
