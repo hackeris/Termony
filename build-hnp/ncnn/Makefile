@@ -1,3 +1,5 @@
+export CMAKE_CCACHE := 1
+
 include ../utils/Makefrag
 
 all: download/ncnn-20250503-full-source.zip
