@@ -29,13 +29,36 @@ FF_CONFIG_OPTIONS="
     --enable-nonfree
 "
 
+CC="${LLVM_PATH}/bin/clang"
+CXX="${LLVM_PATH}/bin/clang++"
+
+# use a wrapper script to call ccache
+if [ "$USE_CCACHE" = "1" ]; then
+
+    cat <<EOF > "$PWD/clang"
+#!/bin/bash
+exec ccache '${CC}' "\$@"
+EOF
+
+    cat <<EOF > "$PWD/clang++"
+#!/bin/bash
+exec ccache '${CXX}' "\$@"
+EOF
+
+    chmod +x "$PWD/clang" "$PWD/clang++"
+
+    CC="$PWD/clang"
+    CXX="$PWD/clang++"
+fi
+
 if [ ${FFMPEG_PLAT} = "${OHOS_ARCH}" ]; then
 
 FF_CONFIG_OPTIONS="$FF_CONFIG_OPTIONS
     --arch=${OHOS_ARCH}
     --target-os=linux
     --enable-cross-compile
-    --cc=${LLVM_PATH}/bin/clang
+    --cc=${CC}
+    --cxx=${CXX}
     --ld=${LLVM_PATH}/bin/clang
     --strip=${LLVM_PATH}/bin/llvm-strip
 "

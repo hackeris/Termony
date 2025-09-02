@@ -1,5 +1,5 @@
 # does not work
-export USE_CCACHE := 0
+export CMAKE_CCACHE := 1
 
 include ../utils/Makefrag
 

@@ -13,7 +13,7 @@ all: download/talloc-2.4.3.tar.gz
 	--cross-compile --host $(OHOS_ARCH)-unknown-linux-musl --cross-answers=$(OHOS_ARCH)-unknown-linux-musl.txt \
 	--disable-python \
 	--check-c-compiler=clang
-	cd temp/talloc-2.4.3 && make -j$(shell nproc) && make install DESTDIR=$(shell pwd)/build
+	cd temp/talloc-2.4.3 && make -j$(shell nproc) && make install -j $(shell nproc) DESTDIR=$(shell pwd)/build
 	mkdir -p ../sysroot
 	cp -rfv build/data/app/base.org/base_1.0/. ../sysroot | tee file.lst
 

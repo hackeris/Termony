@@ -21,7 +21,7 @@ all: download/ffmpeg-8.0.tar.xz ohos_config.sh
 
 	# configure and build
 	cd temp/src && ./ohos_config.sh $(shell pwd)/temp/src $(PREFIX) $(OHOS_ARCH) $(OHOS_SDK_HOME)/native/llvm $(OHOS_SDK_HOME)/native/sysroot false
-	cd temp/src && make -j $(shell nproc) && make install DESTDIR=$(shell pwd)/build
+	cd temp/src && make -j $(shell nproc) && make install -j $(shell nproc) DESTDIR=$(shell pwd)/build
 
 	# strip all elf files
 	$(OHOS_SDK_HOME)/native/llvm/bin/llvm-strip build$(PREFIX)/bin/*

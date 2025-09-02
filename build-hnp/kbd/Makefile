@@ -7,7 +7,7 @@ all: download/kbd-2.8.0.tar.xz
 	cd temp/kbd-2.8.0 && cat ../../x86_64.diff | patch -Np1
 	cd temp/kbd-2.8.0 && PKG_CONFIG=/usr/bin/true ./configure ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --disable-vlock --host $(OHOS_ARCH)-unknown-linux-musl
 	cd temp/kbd-2.8.0 && echo "static char *program_invocation_short_name = \"argv[0]\";" >> config.h
-	cd temp/kbd-2.8.0 && make -j $(shell nproc) && make install DESTDIR=$(shell pwd)/build
+	cd temp/kbd-2.8.0 && make -j $(shell nproc) && make install -j $(shell nproc) DESTDIR=$(shell pwd)/build
 	mkdir -p ../sysroot
 	cp -rv ./build/usr/local/. ../sysroot | tee file.lst
 
