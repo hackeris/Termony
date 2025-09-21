@@ -1,6 +1,6 @@
 include ../utils/Makefrag
 
-SOURCE_URL = https://gitee.com/nanqu_ait/termony-hnp/releases/download/nano/nano-8.6.0.tar.xz
+SOURCE_URL = https://mirrors.tuna.tsinghua.edu.cn/gnu/nano/nano-8.6.tar.xz
 SOURCE_FILE = nano-8.6.tar.xz
 SOURCE_DIR = nano-8.6
 CONFIG_ARGS = --prefix=$(PREFIX) --disable-static --enable-shared --host $(OHOS_ARCH)-unknown-linux-musl
