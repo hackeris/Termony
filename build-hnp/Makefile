@@ -67,7 +67,9 @@ PKGS=gettext \
 	vulkan-tools \
 	shaderc \
 	ffmpeg \
-	util-linux
+	util-linux \
+	nano \
+	less
 else ifeq ($(OHOS_ARCH),x86_64)
 PKGS=gettext \
 	bash \
@@ -136,7 +138,9 @@ PKGS=gettext \
 	vulkan-tools \
 	shaderc \
 	ffmpeg \
-	util-linux
+	util-linux \
+	nano \
+	less
 else
 	echo "Unsupported OHOS_ARCH=$(OHOS_ARCH)"
 	exit 1
