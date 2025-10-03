@@ -69,7 +69,8 @@ PKGS=gettext \
 	ffmpeg \
 	util-linux \
 	nano \
-	less
+	less \
+	p7zip
 else ifeq ($(OHOS_ARCH),x86_64)
 PKGS=gettext \
 	bash \
@@ -140,7 +141,8 @@ PKGS=gettext \
 	ffmpeg \
 	util-linux \
 	nano \
-	less
+	less \
+	p7zip
 else
 	echo "Unsupported OHOS_ARCH=$(OHOS_ARCH)"
 	exit 1
