@@ -32,4 +32,4 @@ all: download/ffmpeg-8.0.tar.xz ohos_config.sh
 
 download/ffmpeg-8.0.tar.xz:
 	mkdir -p download
-	cd download && wget -O ffmpeg-8.0.tar.xz https://ffmpeg.org/releases/ffmpeg-8.0.tar.xz
+	cd download && $(WGET) -O ffmpeg-8.0.tar.xz https://ffmpeg.org/releases/ffmpeg-8.0.tar.xz

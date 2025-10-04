@@ -10,4 +10,4 @@ all: download/main.zip
 
 download/main.zip:
 	mkdir -p download
-	cd download && wget https://github.com/eembc/coremark/archive/refs/heads/main.zip
+	cd download && $(WGET) https://github.com/eembc/coremark/archive/refs/heads/main.zip

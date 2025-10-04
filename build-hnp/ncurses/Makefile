@@ -17,4 +17,4 @@ all: download/ncurses-6.5.tar.gz
 
 download/ncurses-6.5.tar.gz:
 	mkdir -p download
-	cd download && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/ncurses/ncurses-6.5.tar.gz
+	cd download && $(WGET) https://mirrors.tuna.tsinghua.edu.cn/gnu/ncurses/ncurses-6.5.tar.gz
