@@ -15,8 +15,8 @@ all: download/hdc.zip download/securec.zip CMakeLists.txt
 
 download/hdc.zip:
 	mkdir -p download
-	cd download && wget -O hdc.zip https://gitee.com/openharmony/developtools_hdc/repository/archive/OpenHarmony-v5.0.1-Release.zip
+	cd download && $(WGET) -O hdc.zip https://gitee.com/openharmony/developtools_hdc/repository/archive/OpenHarmony-v5.0.1-Release.zip
 
 download/securec.zip:
 	mkdir -p download
-	cd download && wget -O securec.zip https://gitee.com/openharmony/third_party_bounds_checking_function/repository/archive/OpenHarmony-5.0.1-Release.zip
+	cd download && $(WGET) -O securec.zip https://gitee.com/openharmony/third_party_bounds_checking_function/repository/archive/OpenHarmony-5.0.1-Release.zip

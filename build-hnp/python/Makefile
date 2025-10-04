@@ -26,4 +26,4 @@ all: download/Python-3.13.5.tar.xz
 
 download/Python-3.13.5.tar.xz:
 	mkdir -p download
-	cd download && wget https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tar.xz
+	cd download && $(WGET) https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tar.xz

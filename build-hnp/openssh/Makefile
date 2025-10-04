@@ -1,3 +1,4 @@
+include ../utils/Makefrag
 
 all: download/V_10_0_P2.tar.gz
 	rm -rf temp build
@@ -11,4 +12,4 @@ all: download/V_10_0_P2.tar.gz
 
 download/V_10_0_P2.tar.gz:
 	mkdir -p download
-	cd download && wget https://github.com/openssh/openssh-portable/archive/refs/tags/V_10_0_P2.tar.gz
+	cd download && $(WGET) https://github.com/openssh/openssh-portable/archive/refs/tags/V_10_0_P2.tar.gz

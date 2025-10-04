@@ -13,4 +13,4 @@ all: download/v9.1.1436.tar.gz
 
 download/v9.1.1436.tar.gz:
 	mkdir -p download
-	cd download && wget https://github.com/vim/vim/archive/refs/tags/v9.1.1436.tar.gz
+	cd download && $(WGET) https://github.com/vim/vim/archive/refs/tags/v9.1.1436.tar.gz

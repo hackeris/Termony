@@ -34,12 +34,12 @@ subproject: download/$(SPIRVTools_FILE) download/$(SPIRVHeaders_FILE) download/$
 
 download/$(SPIRVTools_FILE):
 	mkdir -p download
-	cd download && wget -O $(SPIRVTools_FILE) --retry-connrefused --read-timeout=20 --timeout=15 $(SPIRVTools_URL)
+	cd download && $(WGET) -O $(SPIRVTools_FILE) $(SPIRVTools_URL)
 
 download/$(SPIRVHeaders_FILE):
 	mkdir -p download
-	cd download && wget -O $(SPIRVHeaders_FILE) --retry-connrefused --read-timeout=20 --timeout=15 $(SPIRVHeaders_URL)
+	cd download && $(WGET) -O $(SPIRVHeaders_FILE) $(SPIRVHeaders_URL)
 
 download/$(glslang_FILE):
 	mkdir -p download
-	cd download && wget -O $(glslang_FILE) --retry-connrefused --read-timeout=20 --timeout=15 $(glslang_URL)
+	cd download && $(WGET) -O $(glslang_FILE) $(glslang_URL)

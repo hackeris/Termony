@@ -24,8 +24,11 @@ export PATH=$TOOL_HOME/tool/node/bin:$PATH
 export OHOS_ARCH=aarch64
 export OHOS_ABI=arm64-v8a
 
+# wget with retry options
+WGET="wget --retry-connrefused --read-timeout=20 --timeout=15"
+
 prepare_arkuix() {
-	wget https://repo.huaweicloud.com/arkui-crossplatform/sdk/${ARKUIX_VERSION}/linux/arkui-x-linux-x64-${ARKUIX_VERSION}-Release.zip -c -O ${PROJ_BASE_HOME}/arkuix-sdk.zip
+	$WGET https://repo.huaweicloud.com/arkui-crossplatform/sdk/${ARKUIX_VERSION}/linux/arkui-x-linux-x64-${ARKUIX_VERSION}-Release.zip -c -O ${PROJ_BASE_HOME}/arkuix-sdk.zip
 	unzip -o ${PROJ_BASE_HOME}/arkuix-sdk.zip
 	# set arkui-x licenses approved
 	pushd ${PROJ_BASE_HOME}/arkui-x

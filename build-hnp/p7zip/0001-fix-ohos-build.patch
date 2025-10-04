@@ -1,0 +1,67 @@
+diff --git a/C/hashes/hash.h b/C/hashes/hash.h
+index 3abf275..274b8c4 100644
+--- a/C/hashes/hash.h
++++ b/C/hashes/hash.h
+@@ -42,6 +42,8 @@
+ 
+ #include "../7zTypes.h"
+ 
++#ifndef __MUSL__
++
+ #ifndef _UINT32_T_DECLARED
+ typedef UInt32 uint32_t;
+ #define _UINT32_T_DECLARED
+@@ -52,7 +54,11 @@ typedef UInt64 uint64_t;
+ #define _UINT64_T_DECLARED
+ #endif
+ 
+-//#include <stdint.h>
++#else
++
++#include <stdint.h>
++
++#endif // __MUSL__
+ 
+ #ifndef min
+ #define min(a,b) (((a)>(b))?(b):(a))
+diff --git a/CPP/myWindows/config.h b/CPP/myWindows/config.h
+index 497d197..ba8dfa9 100644
+--- a/CPP/myWindows/config.h
++++ b/CPP/myWindows/config.h
+@@ -38,7 +38,7 @@
+ 		
+   
+   
+-  #if !defined(ENV_BEOS) && !defined(ANDROID_NDK)
++  #if !defined(ENV_BEOS) && !defined(ANDROID_NDK) && !defined(__MUSL__)
+ 
+     #define ENV_HAVE_GETPASS
+ 
+diff --git a/install.sh b/install.sh
+index bf13aa0..02e3124 100755
+--- a/install.sh
++++ b/install.sh
+@@ -10,7 +10,7 @@ installShared()
+     chmod 755 "${DEST_DIR}${DEST_SHARE}/${prg}"
+     strip     "${DEST_DIR}${DEST_SHARE}/${prg}"
+     echo "#! /bin/sh" > "${DEST_DIR}${DEST_BIN}/${prg}"
+-    echo "\"${DEST_SHARE}/${prg}\" \"\$@\"" >> "${DEST_DIR}${DEST_BIN}/${prg}"
++    echo "\"\$(dirname \"\$(dirname \"\$(realpath \"\$0\")\")\")/${DEST_SHARE}/${prg}\" \"\$@\"" >> "${DEST_DIR}${DEST_BIN}/${prg}"
+     chmod 755 "${DEST_DIR}${DEST_BIN}/${prg}"
+   fi
+ }
+diff --git a/makefile.machine b/makefile.machine
+index a89b568..6d929de 100644
+--- a/makefile.machine
++++ b/makefile.machine
+@@ -11,8 +11,8 @@ ALLFLAGS=${OPTFLAGS} -pipe \
+ 	-D_7ZIP_LARGE_PAGES \
+ 	$(LOCAL_FLAGS)
+ 
+-CXX=g++
+-CC=gcc
++#CXX=g++
++#CC=gcc
+ CC_SHARED=-fPIC
+ LINK_SHARED=-fPIC -shared
+ 

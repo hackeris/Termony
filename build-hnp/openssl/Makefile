@@ -1,3 +1,5 @@
+include ../utils/Makefrag
+
 all: download/openssl-3.5.0.tar.gz
 	rm -rf temp build
 	mkdir -p temp build/bin
@@ -13,4 +15,4 @@ all: download/openssl-3.5.0.tar.gz
 
 download/openssl-3.5.0.tar.gz:
 	mkdir -p download
-	cd download && wget https://github.com/openssl/openssl/releases/download/openssl-3.5.0/openssl-3.5.0.tar.gz
+	cd download && $(WGET) https://github.com/openssl/openssl/releases/download/openssl-3.5.0/openssl-3.5.0.tar.gz

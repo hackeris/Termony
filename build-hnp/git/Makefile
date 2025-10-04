@@ -1,3 +1,5 @@
+include ../utils/Makefrag
+
 all: download/v2.49.0.tar.gz
 	rm -rf temp build
 	mkdir -p temp build
@@ -19,4 +21,4 @@ all: download/v2.49.0.tar.gz
 
 download/v2.49.0.tar.gz:
 	mkdir -p download
-	cd download && wget https://github.com/git/git/archive/refs/tags/v2.49.0.tar.gz
+	cd download && $(WGET) https://github.com/git/git/archive/refs/tags/v2.49.0.tar.gz

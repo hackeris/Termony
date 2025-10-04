@@ -32,4 +32,4 @@ all: download/busybox-1.37.0.tar.bz2
 
 download/busybox-1.37.0.tar.bz2:
 	mkdir -p download
-	cd download && wget https://busybox.net/downloads/busybox-1.37.0.tar.bz2
+	cd download && $(WGET) https://mirrors.slackware.com/slackware/slackware64-current/source/a/mkinitrd/busybox-1.37.0.tar.bz2

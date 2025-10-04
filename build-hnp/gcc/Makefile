@@ -18,4 +18,4 @@ all: download/gcc-15.1.0.tar.xz
 
 download/gcc-15.1.0.tar.xz:
 	mkdir -p download
-	cd download && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-15.1.0/gcc-15.1.0.tar.xz
+	cd download && $(WGET) https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-15.1.0/gcc-15.1.0.tar.xz

@@ -17,4 +17,4 @@ all: download/ncnn-20250503-full-source.zip
 
 download/ncnn-20250503-full-source.zip:
 	mkdir -p download
-	cd download && wget https://github.com/Tencent/ncnn/releases/download/20250503/ncnn-20250503-full-source.zip
+	cd download && $(WGET) https://github.com/Tencent/ncnn/releases/download/20250503/ncnn-20250503-full-source.zip

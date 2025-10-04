@@ -13,4 +13,4 @@ all: download/kbd-2.8.0.tar.xz
 
 download/kbd-2.8.0.tar.xz:
 	mkdir -p download
-	cd download && wget https://www.kernel.org/pub/linux/utils/kbd/kbd-2.8.0.tar.xz
+	cd download && $(WGET) https://www.kernel.org/pub/linux/utils/kbd/kbd-2.8.0.tar.xz

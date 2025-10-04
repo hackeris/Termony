@@ -19,4 +19,4 @@ all: download/talloc-2.4.3.tar.gz
 
 download/talloc-2.4.3.tar.gz:
 	mkdir -p download
-	cd download && wget https://www.samba.org/ftp/talloc/talloc-2.4.3.tar.gz
+	cd download && $(WGET) https://www.samba.org/ftp/talloc/talloc-2.4.3.tar.gz

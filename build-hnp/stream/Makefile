@@ -1,3 +1,5 @@
+include ../utils/Makefrag
+
 all: download/6703f7504a38a8da96b353cadafa64d3c2d7a2d3.zip download/3b92a251022474a293cefc1291bc4fe7b78b62e7.zip
 	rm -rf temp build
 	mkdir -p temp build/bin
@@ -17,8 +19,8 @@ all: download/6703f7504a38a8da96b353cadafa64d3c2d7a2d3.zip download/3b92a2510224
 
 download/6703f7504a38a8da96b353cadafa64d3c2d7a2d3.zip:
 	mkdir -p download
-	cd download && wget https://github.com/jeffhammond/STREAM/archive/6703f7504a38a8da96b353cadafa64d3c2d7a2d3.zip
+	cd download && $(WGET) https://github.com/jeffhammond/STREAM/archive/6703f7504a38a8da96b353cadafa64d3c2d7a2d3.zip
 
 download/3b92a251022474a293cefc1291bc4fe7b78b62e7.zip:
 	mkdir -p download
-	cd download && wget https://github.com/jlinford/stream/archive/3b92a251022474a293cefc1291bc4fe7b78b62e7.zip
+	cd download && $(WGET) https://github.com/jlinford/stream/archive/3b92a251022474a293cefc1291bc4fe7b78b62e7.zip
