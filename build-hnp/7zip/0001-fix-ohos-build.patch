@@ -1,0 +1,19 @@
+--- a/var_clang.mak	2025-08-03 19:14:59.000000000 +0800
++++ b/var_clang.mak	2025-12-04 03:04:17.631340600 +0800
+@@ -6,6 +6,6 @@
+ CROSS_COMPILE=
+ MY_ARCH=
+ USE_ASM=
+-CC=$(CROSS_COMPILE)clang
+-CXX=$(CROSS_COMPILE)clang++
++# CC=$(CROSS_COMPILE)clang
++# CXX=$(CROSS_COMPILE)clang++
+ USE_CLANG=1
+
+--- a/warn_clang.mak	2025-08-03 19:14:59.000000000 +0800
++++ b/warn_clang.mak	2025-12-04 23:38:30.901766100 +0800
+@@ -1,3 +1,3 @@
+-CFLAGS_WARN = -Weverything -Wfatal-errors
++CFLAGS_WARN = -Wfatal-errors
+ # CXX_STD_FLAGS = -std=c++11
+ # CXX_STD_FLAGS =
