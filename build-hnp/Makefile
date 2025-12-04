@@ -70,7 +70,8 @@ PKGS=gettext \
 	util-linux \
 	nano \
 	less \
-	p7zip
+	p7zip \
+	7zip
 else ifeq ($(OHOS_ARCH),x86_64)
 PKGS=gettext \
 	bash \
@@ -142,7 +143,8 @@ PKGS=gettext \
 	util-linux \
 	nano \
 	less \
-	p7zip
+	p7zip \
+	7zip
 else
 	echo "Unsupported OHOS_ARCH=$(OHOS_ARCH)"
 	exit 1
