@@ -1251,7 +1251,8 @@ void terminal_context::Fork() {
         // override HOME to /storage/Users/currentUser since it is writable
         const char *home = "/storage/Users/currentUser";
         setenv("PATH",
-            "/data/app/bin:/data/service/hnp/bin:/bin:"
+            "/data/app/base.org/base_1.0/bin:/data/app/bin:"
+            "/data/service/hnp/base.org/base_1.0/bin:/data/service/hnp/bin:/bin:"
             "/usr/local/bin:/usr/bin:/system/bin:/vendor/bin", 1);
         setenv("HOME", home, 1);
         setenv("PWD", home, 1);
@@ -1260,7 +1261,7 @@ void terminal_context::Fork() {
         // override TMPDIR for tmux
         setenv("TMUX_TMPDIR", "/data/storage/el2/base/cache", 1);
         chdir(home);
-        execl("/data/app/bin/bash", "/data/app/bin/bash", nullptr);
+        execl("/data/app/base.org/base_1.0/bin/bash", "/data/app/base.org/base_1.0/bin/bash", nullptr);
 #endif
     }
 
