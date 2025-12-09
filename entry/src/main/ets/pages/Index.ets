@@ -204,6 +204,11 @@ struct Index {
           controller: this.xComponentController
         })
         .bindContextMenu(this.MenuBuilder, ResponseType.RightClick)
+        .onAxisEvent((event: AxisEvent) => {
+          let offset = event.getVerticalAxisValue()
+          // hilog.info(DOMAIN, 'testTag', 'Got Axis offset: %{public}d', offset);
+          testNapi.scroll(offset);
+        })
       }
       .width('100%')
     }
